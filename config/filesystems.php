@@ -42,6 +42,11 @@ return [
     */
 
     'disks' => [
+        'logs' => [
+            'driver' => 'local',
+            'root' => storage_path('logs'),
+            'url' => env('APP_URL') . '/storage/logs',
+        ],
 
         'local' => [
             'driver' => 'local',
