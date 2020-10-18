@@ -1,38 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <title>Document</title>
-  <link href="/css/app.css" rel="stylesheet">
-  <style>
-    th { background-color: red; padding: 10px;}
-    th { background-color: #eee; padding: 10px;}
-  </style>
-  <script>
-    function doAction() {
-      var id = document.querySelector('#id').value;
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'hello/json/' + id, true);
-      xhr.responseType = 'json';
-      xhr.onload = function(e) {
-        if(this.status == 200) {
-          var result = this.response;
-          document.querySelector('#name').textContent = result.name;
-          document.querySelector('#mail').textContent = result.mail;
-        }
-      };
-      xhr.send();
-    }
-  </script>
+  <title>Index</title>
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body>
+<body style="padding:10px;">
   <h1>Hello/Index</h1>
-  <div>
-    <input type="number" id="id" value="1">
-    <button onclick="doAction();">Click</button>
-    <ul>
-      <li id="name"></li>
-      <li id="mail"></li>
-    </ul>
+  <p>{{ $msg }}</p>
+  <div id="app">
+    <example-component></example-component>
   </div>
+  <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

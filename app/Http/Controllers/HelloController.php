@@ -10,18 +10,14 @@ use Illuminate\Support\Facades\DB;
 use function PHPUnit\Framework\containsOnly;
 use App\Http\Controllers\PersonController;
 use App\Models\Person;
+use App\Jobs\MyJob;
 
 class HelloController extends Controller
 {
    public function index(Request $request) {
-     $msg = 'show people record.';
-     $re = Person::get();
-     $fields = Person::get()->fields();
-
-     $data = [
-        'msg' => implode(', ', $fields),
-        'data' => $re,
-     ];
+        $data = [
+            'msg' => 'This is Vue.js application',
+        ];
         return view('hello.index', $data);
     }
 
