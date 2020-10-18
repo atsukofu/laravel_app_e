@@ -2,26 +2,37 @@
 <html lang="ja">
 <head>
   <title>Document</title>
+  <link href="/css/app.css" rel="stylesheet">
   <style>
     th { background-color: red; padding: 10px;}
     th { background-color: #eee; padding: 10px;}
   </style>
+  <script>
+    function doAction() {
+      var id = document.querySelector('#id').value;
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'hello/json/' + id, true);
+      xhr.responseType = 'json';
+      xhr.onload = function(e) {
+        if(this.status == 200) {
+          var result = this.response;
+          document.querySelector('#name').textContent = result.name;
+          document.querySelector('#mail').textContent = result.mail;
+        }
+      };
+      xhr.send();
+    }
+  </script>
 </head>
 <body>
   <h1>Hello/Index</h1>
-  <p>{!!$msg!!}</p>
-  <form action="/hello" method="post">
-    @csrf
-    <div>NAME:<input type="text" name="name"></div>
-    <div>MAIL:<input type="text" name="email"></div>
-    <div>TEL:<input type="text" name="tel"></div>
-    <input type="submit">
-  </form>
-  <hr>
-  <ol>
-    @for($i = 0; $i < count($keys); $i++)
-      <li>{{$keys[$i]}}: {{$values[$i]}}</li>
-    @endfor
-  </ol>
+  <div>
+    <input type="number" id="id" value="1">
+    <button onclick="doAction();">Click</button>
+    <ul>
+      <li id="name"></li>
+      <li id="mail"></li>
+    </ul>
+  </div>
 </body>
 </html>
