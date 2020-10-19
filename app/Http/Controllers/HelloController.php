@@ -16,7 +16,7 @@ class HelloController extends Controller
 {
    public function index(Request $request) {
         $data = [
-            'msg' => 'This is Vue.js application',
+            'msg' => 'This is React application',
         ];
         return view('hello.index', $data);
     }

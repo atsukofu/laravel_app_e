@@ -8,9 +8,8 @@
 <body style="padding:10px;">
   <h1>Hello/Index</h1>
   <p>{{ $msg }}</p>
-  <div id="app">
-    <example-component></example-component>
-  </div>
-  <script src="{{ mix('js/app.js') }}"></script>
+  <div id="example"></div>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <link rel="stylesheet" href="{{ mix('css/app.css')}}" type="text/css">
 </body>
 </html>
