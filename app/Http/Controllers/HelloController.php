@@ -14,9 +14,9 @@ use App\Jobs\MyJob;
 
 class HelloController extends Controller
 {
-   public function index(Request $request) {
+   public function index() {
         $data = [
-            'msg' => 'This is React application',
+            'msg' => 'This is Angular application',
         ];
         return view('hello.index', $data);
     }
